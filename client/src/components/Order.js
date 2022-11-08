@@ -15,7 +15,7 @@ const Order = () => {
 
   useEffect(() => {
     axios
-      .get(`api/v1/orders/${id}`)
+      .get(`${process.env.REACT_APP_HOST}/${id}`)
       .then((res) => setGetOrderId(res.data.data.order));
   }, []);
 
