@@ -1,15 +1,15 @@
-*{
-    padding: 0%;
-    margin: 0;
-    box-sizing: border-box;
+* {
+  padding: 0%;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-.containerCloser{
-    background-color:  rgb(29, 39, 48);
-    height: 100vh;
-    width: 100vw;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center ;
+.containerCloser {
+  background-color: rgb(29, 39, 48);
+  height: 100vh;
+  width: 100vw;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

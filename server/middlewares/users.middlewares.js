@@ -1,37 +1,34 @@
 // Models
-const { User } = require('../models/user.model');
+const { User } = require("../models/user.model");
 
 // Utils
-const { catchAsync } = require('../utils/catchAsync.util');
-const { AppError } = require('../utils/appError.util');
-const { Order } = require('../models/order.model');
+const { catchAsync } = require("../utils/catchAsync.util");
+const { AppError } = require("../utils/appError.util");
+const { Order } = require("../models/order.model");
 
 const userExists = catchAsync(async (req, res, next) => {
-	const { id } = req.params;
+  const { id } = req.params;
 
-	const user = await User.findOne({
-		where: { id },
-		include: [
+  const user = await User.findOne({
+    where: { id },
+    include: [
+      {
+        model: Order,
+        attributes: ["id", "code", "userId", "dateDelivery"],
+      },
+    ],
+  });
 
-			{
-				model:Order,
-				attributes:['id','code','userId','dateDelivery']
-			}
-		]
-	});
+  // If user doesn't exist, send error message
+  if (!user) {
+    return next(new AppError("User not found", 404));
+  }
 
-	// If user doesn't exist, send error message
-	if (!user) {
-		return next(new AppError('User not found', 404));
-	}
-
-	// req.anyPropName = 'anyValue'
-	req.user = user;
-	next();
+  // req.anyPropName = 'anyValue'
+  req.user = user;
+  next();
 });
 
-
 module.exports = {
-	userExists,
-	
+  userExists,
 };

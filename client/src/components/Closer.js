@@ -1,10 +1,10 @@
 import React from "react";
 import "../styles/closer.css";
-import Button from 'react-bootstrap/Button';
-import {useNavigate} from "react-router-dom"
+import Button from "react-bootstrap/Button";
+import { useNavigate } from "react-router-dom";
 
 const Closer = () => {
-    const navigate = useNavigate()
+  const navigate = useNavigate();
   return (
     <div className="containerCloser">
       <h1>
@@ -13,9 +13,10 @@ const Closer = () => {
         for using the app
         <br />
         to track orders
-        <br/>
-        <Button variant="outline-primary"
-              onClick={()=>navigate(`/`)}>Nueva consulta</Button>{' '}
+        <br />
+        <Button variant="outline-primary" onClick={() => navigate(`/`)}>
+          Nueva consulta
+        </Button>{" "}
       </h1>
     </div>
   );

@@ -4,8 +4,8 @@ import Button from "react-bootstrap/Button";
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import {AiOutlineShopping} from "react-icons/ai"
- 
+import { AiOutlineShopping } from "react-icons/ai";
+
 const Home = () => {
   const [inputCode, setInputCode] = useState("");
   const [typeDni, setTypeDni] = useState("");
@@ -15,24 +15,26 @@ const Home = () => {
 
   const dniRequest = {
     dniNumber: numberDni,
-    dniType:typeDni
+    dniType: typeDni,
   };
 
   const submit = () => {
-    console.log(typeDni)
+    console.log(typeDni);
     axios
       .post(`${process.env.REACT_APP_HOST}/orders/${inputCode}`, dniRequest)
-      .then((res) =>  navigate(`/${inputCode}`))
-      .catch(error => alert("No existe pedidos relacionados con los datos ingresados!!"))
+      .then((res) => navigate(`/${inputCode}`))
+      .catch((error) =>
+        alert("No existe pedidos relacionados con los datos ingresados!!")
+      );
   };
 
-
-
-console.log(typeDni)
+  console.log(typeDni);
   return (
     <div className="containerHome">
       <div className="containerForm">
-         <h1><AiOutlineShopping/> Order</h1>    
+        <h1>
+          <AiOutlineShopping /> Order
+        </h1>
         <label htmlFor="codeInput">
           Codigo
           <br />
@@ -43,21 +45,18 @@ console.log(typeDni)
             onChange={(e) => setInputCode(e.target.value)}
           />
         </label>
-        <select name="" 
-                id=""
-                className="selecForm"
-                value={typeDni}
-                onChange={(e) => setTypeDni(e.target.value)}>
-                    
-          
+        <select
+          name=""
+          id=""
+          className="selecForm"
+          value={typeDni}
+          onChange={(e) => setTypeDni(e.target.value)}
+        >
           <option selected="true">Tipo de documento</option>
-          <option >CC</option>
-          <option >CE</option>
-          <option >NIT</option>
-
-          </select>
-          
-    
+          <option>CC</option>
+          <option>CE</option>
+          <option>NIT</option>
+        </select>
         <label htmlFor="dniNumber">
           N° Documento
           <br />
