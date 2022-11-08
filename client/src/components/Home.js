@@ -21,7 +21,7 @@ const Home = () => {
   const submit = () => {
     console.log(typeDni)
     axios
-      .post(`${process.env.REACT_APP_HOST}/${inputCode}`, dniRequest)
+      .post(`${process.env.REACT_APP_HOST}/orders/${inputCode}`, dniRequest)
       .then((res) =>  navigate(`/${inputCode}`))
       .catch(error => alert("No existe pedidos relacionados con los datos ingresados!!"))
   };
